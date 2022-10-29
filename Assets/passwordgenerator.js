@@ -17,30 +17,33 @@ function RandomIndex(a, b) {
 
 function minCheck(a, b) {
     var answer = window.prompt('How many ' + a + ' would you like in your password? (Min: ' + b + ')');
-    var isNotinteger = isNaN(answer)
-    console.log(isNotinteger)
     if (answer < b) {
         window.alert('You must have a minimum of ' + b + ' ' + a + ' in your password!');
         var result = minCheck(a, b);
         return result;
     }
-    else if (isNotinteger == true){
+    else if (isNaN(answer)){
         window.alert("You must select a number");
-        var response = minCheck(a, b);
+        var result = minCheck(a, b);
         return response;
+    }
+    else if (answer >= 20){
+        window.alert("You can not have more than 10 " + a + " in your password.");
+        var result = minCheck(a, b);
+        return result;
     }
     else {
         return answer;
     }
 }
 
-var NumOfLetters = minCheck('lower case letters', 8)
+var NumOfLetters = minCheck('lower case letters', 4)
 RandomIndex(NumOfLetters, letters);
 var NumofCapitaletters = minCheck('capital letters', 4)
 RandomIndex(NumofCapitaletters, CapLetters);
-var NumOfSymbols = minCheck('numbers', 2)
+var NumOfSymbols = minCheck('numbers', 1)
 RandomIndex(NumOfSymbols, symbols);
-var NumOfNumbers = minCheck('symbols', 2)
+var NumOfNumbers = minCheck('symbols', 1)
 RandomIndex(NumOfNumbers, numbers);
 
 function shuffle(Password) {
@@ -54,4 +57,18 @@ function shuffle(Password) {
 }
 
 shuffle(Password)
+
+var generateBtn = document.querySelector("#generate");
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
+}
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 window.alert('Congrats!! Your randomly generated password is:    ' + Password.join(''));
