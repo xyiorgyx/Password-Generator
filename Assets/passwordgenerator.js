@@ -17,10 +17,17 @@ function RandomIndex(a, b) {
 
 function minCheck(a, b) {
     var answer = window.prompt('How many ' + a + ' would you like in your password? (Min: ' + b + ')');
+    var isinteger = isNaN(answer)
+    console.log(isinteger)
     if (answer < b) {
         window.alert('You must have a minimum of ' + b + ' ' + a + ' in your password!');
         var result = minCheck(a, b);
         return result;
+    }
+    else if (isinteger == true){
+        window.alert("You must select a number");
+        var response = minCheck(a, b);
+        return response;
     }
     else {
         return answer;
