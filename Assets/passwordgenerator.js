@@ -5,7 +5,6 @@ var symbols = ['!', '@', "#", '%', '&', '*', '?', '^', '+', '='];
 
 var Password = [''];
 
-window.alert("Hello!, and welcome to the random password generator!")
 
 function RandomIndex(a, b) {
     for (i = 0; i < a; i++) {
@@ -16,7 +15,7 @@ function RandomIndex(a, b) {
 }
 
 function minCheck(a, b) {
-    var answer = window.prompt('How many ' + a + ' would you like in your password? (Min: ' + b + ')');
+    var answer = window.prompt('How many ' + a + ' would you like in your password? (Min: ' + b + ') (Max:32)');
     if (answer < b) {
         window.alert('You must have a minimum of ' + b + ' ' + a + ' in your password!');
         var result = minCheck(a, b);
@@ -25,10 +24,10 @@ function minCheck(a, b) {
     else if (isNaN(answer)){
         window.alert("You must select a number");
         var result = minCheck(a, b);
-        return response;
+        return result;
     }
-    else if (answer >= 20){
-        window.alert("You can not have more than 10 " + a + " in your password.");
+    else if (answer >= 32){
+        window.alert("You can not have more than 32 " + a + " in your password.");
         var result = minCheck(a, b);
         return result;
     }
@@ -36,15 +35,6 @@ function minCheck(a, b) {
         return answer;
     }
 }
-
-var NumOfLetters = minCheck('lower case letters', 4)
-RandomIndex(NumOfLetters, letters);
-var NumofCapitaletters = minCheck('capital letters', 4)
-RandomIndex(NumofCapitaletters, CapLetters);
-var NumOfSymbols = minCheck('numbers', 1)
-RandomIndex(NumOfSymbols, symbols);
-var NumOfNumbers = minCheck('symbols', 1)
-RandomIndex(NumOfNumbers, numbers);
 
 function shuffle(Password) {
     let currentIndex = Password.length, randomIndex;
@@ -56,19 +46,26 @@ function shuffle(Password) {
     return Password;
 }
 
-shuffle(Password)
+var generateBtn = document.querySelector('#generate');
 
-var generateBtn = document.querySelector("#generate");
-
-// Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+    Password = Password.splice()
 
-  passwordText.value = password;
+    var NumOfLetters = minCheck('lower case letters', 4);
+    RandomIndex(NumOfLetters, letters);
+    var NumofCapitaletters = minCheck('capital letters', 4);
+    RandomIndex(NumofCapitaletters, CapLetters);
+    var NumOfSymbols = minCheck('numbers', 1);
+    RandomIndex(NumOfSymbols, symbols);
+    var NumOfNumbers = minCheck('symbols', 1);
+    RandomIndex(NumOfNumbers, numbers);
+
+    var shuffledPassword = shuffle(Password);
+    var finalPassword = shuffledPassword.join('');
+  
+  var passwordText = document.querySelector('#password');
+  passwordText.value = finalPassword;
 
 }
 
-// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-window.alert('Congrats!! Your randomly generated password is:    ' + Password.join(''));

@@ -2,7 +2,7 @@
 Application intended to  be used to create a random password based on user inputs.
 
 ## How to Use. 
-- The random password generator will create a password of no less than 10 characters. User must input at least a minimum of 4 lowercase letters, 4 uppercase letters, 1 number, and 1 symbol.
+- The random password generator will create a password of no less than 10 characters and no more than 80 characters. User must input at least a minimum of 4 lowercase letters, 4 uppercase letters, 1 number, and 1 symbol.
 - Password generator will not accept non-integer inputs. 
 
 ## Purpose
