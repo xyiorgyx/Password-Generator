@@ -7,3 +7,18 @@ Application intended to  be used to create a random password based on user input
 
 ## Purpose
 - The generator is intended to create safe and completely randomized passwords. These passwords are accepted as the basic minimum requirements for many website. Including lowercase, uppercase, number, and symbol minimums.
+
+## link to live website
+ https://xyiorgyx.github.io/Password-Generator/
+
+## link to github
+https://github.com/xyiorgyx/Password-Generator
+
+## Image
+
+![Picture of main page of password generator](./Assets/images/scrrenshot.png)
+
+
+
+
+
