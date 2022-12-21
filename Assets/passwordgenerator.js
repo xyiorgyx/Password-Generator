@@ -75,14 +75,16 @@ function charactertype(a, b) {
  has been selected, x characters are chosen, then scrambled in a array and the 
  commas and quotes are removed. */
 function writePassword() {
+
     Password = Password.splice();
     var numOfChar = checkChar();
-
+    // below hopefully, clears out the selected char array, as requested the last 4 submissions =)
+    selectedChar = selectedChar.splice();
     charactertype("lower case  letters", letters);
     charactertype("upper case letters", CapLetters);
     charactertype('numbers', numbers);
     charactertype('symbols', symbols);
-
+    
     var shuffledChar = shuffle(selectedChar);
     console.log(shuffledChar)
     RandomIndex(numOfChar, shuffledChar);
